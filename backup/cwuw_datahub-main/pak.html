@@ -39,13 +39,12 @@
     <script type="text/javascript"
 	    src="https://public.tableau.com/javascripts/api/tableau-2.min.js">
     </script>
-    <!--
     <script type="text/javascript">
         var viz; 
 
         function initViz() {
             var containerDiv = document.getElementById("vizContainer"),
-                url = "https://public.tableau.com/views/CountryIndicator/MyDashboard-Metadata",
+                url = "https://public.tableau.com/views/CountryIndicator/Pakistan",
                 options = {
                     hideTabs: true,
                     onFirstInteractive: function () {
@@ -65,7 +64,6 @@
             viz.showExportCrossTabDialog();
         }
     </script>
-    -->
   </head>
   <body onload="initViz();">
     
@@ -85,10 +83,7 @@
 </header>
 
 <div class="container-fluid">
-
-  <!--<div class="row">-->
-
-    <!--
+  <div class="row">
     <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse">
       <div class="position-sticky pt-3">
         <ul class="nav flex-column">
@@ -182,15 +177,14 @@
         </ul>
       </div>
     </nav>
-    -->
 
-    <main class="col-md-12 ms-sm-auto col-lg-12 px-md-4">
+    <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
       <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-        <h1 class="h2">Metadata</h1>
+        <h1 class="h2">Pakistan</h1>
         <div class="btn-toolbar mb-2 mb-md-0">
           <div class="btn-group me-2">
-            <!--<button type="button" class="btn btn-sm btn-outline-secondary" onclick="exportToCSV();">Export to CSV</button>-->
-            <!--<button type="button" class="btn btn-sm btn-outline-secondary"  onclick="exportToExcel();">Export to Excel</button>-->
+            <button type="button" class="btn btn-sm btn-outline-secondary" onclick="exportToCSV();">Export to CSV</button>
+            <button type="button" class="btn btn-sm btn-outline-secondary"  onclick="exportToExcel();">Export to Excel</button>
           </div>
           <!--
           <button type="button" class="btn btn-sm btn-outline-secondary dropdown-toggle">
@@ -201,14 +195,7 @@
         </div>
       </div>
 
-      <!--<div id="vizContainer" style="width:1150px; height:550px;"></div>-->
-      
-      
-
-      <ul>
-        <li><a href="https://docs.google.com/document/d/1W7Hq4WmdRuA51zYlY7nGuEfhb_OAWY_4/edit?usp=sharing&ouid=100890728863173750671&rtpof=true&sd=true">Annex1 - Coutry Data Sourcing</a></li>
-        <li><a href="https://docs.google.com/document/d/1hoesQtJrmETAkrA2jrXg0pNGBJuYVjWB/edit?usp=sharing&ouid=100890728863173750671&rtpof=true&sd=true">Annex2 - Utility Data Sourcing</a></li>
-      </ul>
+      <div id="vizContainer" style="width:1150px; height:887px;"></div>
 
       <!--
       <h2></h2>
@@ -217,7 +204,7 @@
       </div>
       -->
     </main>
-  <!--</div>-->
+  </div>
 </div>
 
 

@@ -8,6 +8,25 @@
     <!---Bootstrap CSS-->
     <link href="dist/css/bootstrap.min.css" rel="stylesheet">
 
+    <style>
+      .dropdown-menu li {
+        position: relative;
+      }
+      .dropdown-menu .dropdown-submenu {
+        display: none;
+        position: absolute;
+        left: 100%;
+        top: -7px;
+      }
+      .dropdown-menu .dropdown-submenu-left {
+        right: 100%;
+        left: auto;
+      }
+      .dropdown-menu > li:hover > .dropdown-submenu {
+        display: block;
+      }
+    </style>
+
     <!--Tableau embed script-->
     <script type="text/javascript"
 	    src="https://public.tableau.com/javascripts/api/tableau-2.min.js">
@@ -79,6 +98,39 @@
 
             var vizURL = vizList[vizIndex];
             viz = new tableau.Viz(vizDiv, vizURL, options);
+        }
+
+        function filterProject(varProjectName) {
+          var vizDiv = document.getElementById("vizContainer"),
+                options = {
+                    "ProjectName": varProjectName,
+                    hideTabs: true
+                };
+
+            /*    
+            vizCount = vizCount + vizPlusMinus;
+
+            if (vizCount >= vizLen) {
+            // Keep the vizCount in the bounds of the array index.
+                vizCount = 0;
+            } else if (vizCount < 0) {
+                vizCount = vizLen - 1;
+            }
+            */
+
+            if (viz) { // If a viz object exists, delete it.
+                viz.dispose();
+            }
+
+            var vizURL = "https://public.tableau.com/views/ProjectLevel_16693519836260/TableDashboard";
+            viz = new tableau.Viz(vizDiv, vizURL, options);
+
+            /*var sheet = viz.getWorkbook().getActiveSheet();
+            if (varName === "") {
+                sheet.clearFilterAsync("ProjectName");
+            } else {
+                sheet.applyFilterAsync("ProjectName", varProjectName, tableau.FilterUpdateType.REPLACE);
+            }*/
         }
     </script>
 
@@ -154,9 +206,45 @@
             <li class="nav-item">
               <a class="nav-link" href="#" onclick="createViz(10)">Utilities</a>
             </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#" onclick="createViz(11)">Projects</a>
+
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#"  data-bs-toggle="dropdown" aria-expanded="false">Projects</a>
+              <ul class="dropdown-menu">
+                <li>
+                  <a class="dropdown-item" href="#">Georgia &raquo;</a>
+                  <ul class="dropdown-menu dropdown-submenu">
+                    <li><a class="dropdown-item" href="#" onclick="filterProject('Urban Services Improvement Investment Program')">Urban Services Improvement Investment Program</a></li>
+                    <li><a class="dropdown-item" href="#" onclick="filterProject('Multitranche Financing Facility Georgia: Urban Services Improvement Investment Program')">Multitranche Financing Facility Georgia: Urban Services Improvement Investment Program</a></li>
+                    <li><a class="dropdown-item" href="#" onclick="filterProject('Sustainable Urban Transport Investment Program - Tranche 2')">Sustainable Urban Transport Investment Program - Tranche 2</a></li>
+                    <li><a class="dropdown-item" href="#" onclick="filterProject('Livable cities')">Livable cities</a></li>
+                    <li><a class="dropdown-item" href="#" onclick="filterProject('Sustainable Urban Transport Investment Program – Tranche 3')">Sustainable Urban Transport Investment Program – Tranche 3</a></li>
+                    <li><a class="dropdown-item" href="#" onclick="filterProject('Georgia: Sustainable Urban Transport Investment Program Tranche 1')">Georgia: Sustainable Urban Transport Investment Program Tranche 1</a></li>
+                  </ul>
+                </li>
+                <li>
+                  <a class="dropdown-item" href="#">Pakistan &raquo;</a>
+                  <ul class="dropdown-menu dropdown-submenu">
+                    <li><a class="dropdown-item" href="#" onclick="filterProject('Khyber Pakhtunkhwa Cities Improvement Project')">Khyber Pakhtunkhwa Cities Improvement Project</a></li>
+                    <li><a class="dropdown-item" href="#" onclick="filterProject('Punjab Intermediate Cities Improvement Investment Project')">Punjab Intermediate Cities Improvement Investment Project</a></li>
+                    <li><a class="dropdown-item" href="#" onclick="filterProject('Karachi Bus Rapid Transit Red Line Project')">Karachi Bus Rapid Transit Red Line Project</a></li>
+                    <li><a class="dropdown-item" href="#" onclick="filterProject('Peshawar Sustainable Bus Rapid Transit Corridor Project')">Peshawar Sustainable Bus Rapid Transit Corridor Project</a></li>
+                  </ul>
+                </li>
+                <li>
+                  <a class="dropdown-item" href="#">Uzbekistan &raquo;</a>
+                  <ul class="dropdown-menu dropdown-submenu">
+                    <li><a class="dropdown-item" href="#" onclick="filterProject('Solid Waste Management Improvement Project')">Solid Waste Management Improvement Project</a></li>
+                    <li><a class="dropdown-item" href="#" onclick="filterProject('Second Tashkent Province Water Supply Development Project')">Second Tashkent Province Water Supply Development Project</a></li>
+                    <li><a class="dropdown-item" href="#" onclick="filterProject('UZB/Tashkent Province Water Supply Development Project')">UZB/Tashkent Province Water Supply Development Project</a></li>
+                    <li><a class="dropdown-item" href="#" onclick="filterProject('Tashkent Province Sewerage Improvement Project')">Tashkent Province Sewerage Improvement Project</a></li>
+                    <li><a class="dropdown-item" href="#" onclick="filterProject('Sustainable Solid-Waste Management Project')">Sustainable Solid-Waste Management Project</a></li>
+                    <li><a class="dropdown-item" href="#" onclick="filterProject('Djizzak Sanitation System Development Project')">Djizzak Sanitation System Development Project</a></li>
+                    <li><a class="dropdown-item" href="#" onclick="filterProject('Western Uzbekistan Water Supply System Development Project')">Western Uzbekistan Water Supply System Development Project</a></li>
+                  </ul>
+                </li>
+              </ul>
             </li>
+
             <li class="nav-item">
               <a class="nav-link" href="metadata.html">Metadata</a>
             </li>
